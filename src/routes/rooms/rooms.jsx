@@ -40,7 +40,7 @@ function Room() {
 
         const bringRooms = async () => {
             try {
-                const response = await axios.get('https://chatappbackend-1-0xv7.onrender.com/api/users/rooms', {
+                const response = await axios.get('https://chatappbackend-rkvj.onrender.com/api/users/rooms', {
                     headers: {
                         Authorization: `Bearer ${Cookies.get('token')}`,
                     },
