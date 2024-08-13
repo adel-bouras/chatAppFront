@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 import io from 'socket.io-client';
 
-const socket = io.connect('http://localhost:8000');
+const socket = io.connect('https://chatappbackend-1-0xv7.onrender.com');
 
 function Room() {
     const [render, setRender] = useState(false);
@@ -19,7 +19,7 @@ function Room() {
     useEffect(() => {
         const fetchMessages = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/api/users/messages/${Cookies.get('current_room')}`, {
+                const response = await axios.get(`https://chatappbackend-1-0xv7.onrender.com/api/users/messages/${Cookies.get('current_room')}`, {
                     headers: {
                         Authorization: `Bearer ${Cookies.get('token')}`,
                     },
@@ -40,7 +40,7 @@ function Room() {
 
         const bringRooms = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/users/rooms', {
+                const response = await axios.get('https://chatappbackend-1-0xv7.onrender.com/api/users/rooms', {
                     headers: {
                         Authorization: `Bearer ${Cookies.get('token')}`,
                     },

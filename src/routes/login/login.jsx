@@ -20,7 +20,7 @@ export default function Login() {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     try{
-      const response = await axios.post('http://localhost:8000/api/users/login',{
+      const response = await axios.post('https://chatappbackend-1-0xv7.onrender.com/api/users/login',{
         email : email ,
         password : password
       })
@@ -43,7 +43,7 @@ export default function Login() {
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
     try{
-      const response = await axios.post('http://localhost:8000/api/users/register' , {
+      const response = await axios.post('https://chatappbackend-1-0xv7.onrender.com/api/users/register' , {
         fullName : fullName,
         email : registerEmail ,
         password : registerPassword
