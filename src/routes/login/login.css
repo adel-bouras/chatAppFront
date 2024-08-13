@@ -1,0 +1,57 @@
+#mainPage {
+    display: flex;
+    min-width: 100vw; 
+    min-height: 100vh; 
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    position: relative;
+}
+
+#mainPage h1 {
+    text-decoration: underline;
+    color: rgb(97, 97, 97);
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#mainPage #login form,
+#mainPage #register form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#mainPage button {
+    align-self: flex-end;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: bisque;
+    box-shadow: 0 5px 0px black;
+    border: none;
+    cursor: pointer;
+}
+
+#mainPage button:active {
+    transform: translateY(5px);
+    box-shadow: none;
+}
+
+#mainPage input {
+    width: 300px;
+    height: 30px;
+    font-size: 15px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+#mainPage input:focus {
+    border: 2px solid green;
+}
+

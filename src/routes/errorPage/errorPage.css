@@ -1,0 +1,9 @@
+#error{
+    min-height: 100dvh;
+    min-width: 100dvw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(189, 179, 179);
+}
