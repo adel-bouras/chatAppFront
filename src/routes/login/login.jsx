@@ -29,6 +29,7 @@ export default function Login() {
       Cookies.set('email' , response.data.email , {expires : 1});
       Cookies.set('fullName' , response.data.fullName , {expires : 1});
       Cookies.set('token' , response.data.token , {expires : 1});
+      Cookies.set('_id' , response.data._id , {expires : 1});
       localStorage.setItem('rooms' , JSON.stringify(response.data.rooms));
       setLoged(true);
     }catch(e){
@@ -52,6 +53,7 @@ export default function Login() {
       Cookies.set('email' , response.data.email , {expires : 1});
       Cookies.set('fullName' , response.data.fullName , {expires : 1});
       Cookies.set('token' , response.data.token , {expires : 1});
+      Cookies.set('_id' , response.data._id , {expires : 1});
       localStorage.setItem('rooms' , JSON.stringify(response.data.rooms));
       setLoged(true);
     }catch(e){

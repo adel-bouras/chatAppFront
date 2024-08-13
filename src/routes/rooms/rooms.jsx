@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react';
 import ErrorPage from './../../routes/errorPage/errorPage';
 import Cookies from 'js-cookie';
 import axios from 'axios';
-import { io } from 'socket.io-client';
+import  io  from 'socket.io-client';
 
-
+const socket = io.connect('http://localhost:8000');
 
 function Room(){
-    
+    const [render , setRender] = useState(false);
     const [rooms , setRooms] = useState([]);
     const [error , setError] = useState(true);
     const navigate = useNavigate();
@@ -23,7 +23,7 @@ function Room(){
                         Authorization :`Bearer ${Cookies.get('token')}`
                     }
                 })
-                setRooms(response.data.data);
+                setRooms(response.data);
                 setError(false);
             }catch(e){
                 setError(e.response.data.message)
@@ -31,21 +31,24 @@ function Room(){
 
         }
 bringRooms();
-return
-    },[])
 
-
-
+socket.on('create' , (data)=>{
+    Cookies.set('current_room' , {userId :Cookies.get('_id') ,roomId : data.roomId});
+})
+},[render]);
 
 
 
     const handlRoomClicked = (index)=>{
-
+        socket.emit('join' , {userId : Cookies.get('_id'), roomId : rooms[index]._id});
+        Cookies.remove('current_room');
+        Cookies.set('current_room' , rooms[index]._id);
+        setRender(!render);
     }
 
     const handlCreateRoom = ()=>{
-
-
+        socket.emit('create' , {userId : Cookies.get('_id')});
+        setRender(!render);
     }
 
     const handlLogout = ()=>{
@@ -60,7 +63,7 @@ return
         navigate('/');
     }
 
-
+    localStorage.setItem('rooms' , JSON.stringify(rooms));
 
     return (
             (error) ? (
@@ -75,8 +78,7 @@ return
                         <h1>Rooms :</h1>
                         {
                             rooms.map((element , index)=> <div onClick={()=>handlRoomClicked(index)} key={index} className="room">
-                                <h3>{element}</h3>
-        
+                                <h3>{element._id}</h3>
                             </div>  )
                         }
         
@@ -90,5 +92,7 @@ return
             )
     )
 }
+
+export {socket};
 
 export default Room;
