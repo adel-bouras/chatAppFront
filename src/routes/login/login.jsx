@@ -30,6 +30,7 @@ export default function Login() {
       Cookies.set('fullName' , response.data.fullName , {expires : 1});
       Cookies.set('token' , response.data.token , {expires : 1});
       Cookies.set('_id' , response.data._id , {expires : 1});
+      Cookies.set('current_room' , '66bbe1a84542024b11813124');
       localStorage.setItem('rooms' , JSON.stringify(response.data.rooms));
       setLoged(true);
     }catch(e){
@@ -54,6 +55,7 @@ export default function Login() {
       Cookies.set('fullName' , response.data.fullName , {expires : 1});
       Cookies.set('token' , response.data.token , {expires : 1});
       Cookies.set('_id' , response.data._id , {expires : 1});
+      Cookies.set('current_room' , '66bbe1a84542024b11813124');
       localStorage.setItem('rooms' , JSON.stringify(response.data.rooms));
       setLoged(true);
     }catch(e){
